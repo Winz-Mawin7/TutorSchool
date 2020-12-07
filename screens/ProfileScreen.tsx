@@ -7,6 +7,24 @@ import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { StackParamProps } from '../types';
 import profile from '../data/profile.json';
 
+const AvatarProfile = (props: { imageUrl: string }) => <Image style={styles.profileImage} source={{ uri: props.imageUrl }} />;
+
+const ProfileDetail = (props: { title: string; detail: string }) => <ListItem title={props.title} accessoryRight={() => <Text>{props.detail}</Text>} />;
+
+const ProfilePhone = (props: { title: string; detail: string }) => (
+  <ListItem
+    title={props.title}
+    accessoryRight={(evaProps) => (
+      <>
+        <TouchableWithoutFeedback onPress={() => Linking.openURL(`tel:${props.detail}`)}>
+          <Icon {...evaProps} name='phone-call' fill='green' />
+        </TouchableWithoutFeedback>
+        <Text>{props.detail}</Text>
+      </>
+    )}
+  />
+);
+
 export default function ProfileScreen({ navigation }: StackParamProps<'ProfileScreen'>) {
   return (
     <Layout style={styles.container}>
@@ -29,24 +47,6 @@ export default function ProfileScreen({ navigation }: StackParamProps<'ProfileSc
     </Layout>
   );
 }
-
-const AvatarProfile = (props: { imageUrl: string }) => <Image style={styles.profileImage} source={{ uri: props.imageUrl }} />;
-
-const ProfileDetail = (props: { title: string; detail: string }) => <ListItem title={props.title} accessoryRight={() => <Text>{props.detail}</Text>} />;
-
-const ProfilePhone = (props: { title: string; detail: string }) => (
-  <ListItem
-    title={props.title}
-    accessoryRight={(evaProps) => (
-      <>
-        <TouchableWithoutFeedback onPress={() => Linking.openURL(`tel:${props.detail}`)}>
-          <Icon {...evaProps} name='phone-call' fill='green' />
-        </TouchableWithoutFeedback>
-        <Text>{props.detail}</Text>
-      </>
-    )}
-  />
-);
 
 const styles = StyleSheet.create({
   container: {
