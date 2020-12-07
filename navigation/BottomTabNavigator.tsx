@@ -5,9 +5,12 @@ import * as React from 'react';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import TabOneScreen from '../screens/TabOneScreen';
+import HomeScreen from '../screens/HomeScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
-import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
+import SetingScreen from '../screens/SettingScreen';
+import ProfileScreen from '../screens/ProfileScreen';
+import { BottomTabParamList, SettingsParamList, HomeParamList, TabTwoParamList } from '../types';
+import { Icon } from '@ui-kitten/components';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -15,12 +18,12 @@ export default function BottomTabNavigator() {
   const colorScheme = useColorScheme();
 
   return (
-    <BottomTab.Navigator initialRouteName='TabOne' tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
+    <BottomTab.Navigator initialRouteName='Home' tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
       <BottomTab.Screen
-        name='TabOne'
-        component={TabOneNavigator}
+        name='Home'
+        component={HomeNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name='ios-code' color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name='ios-home' color={color} />,
         }}
       />
       <BottomTab.Screen
@@ -28,6 +31,13 @@ export default function BottomTabNavigator() {
         component={TabTwoNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name='ios-code' color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name='Settings'
+        component={SettingNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name='ios-settings' color={color} />,
         }}
       />
     </BottomTab.Navigator>
@@ -42,13 +52,14 @@ function TabBarIcon(props: { name: string; color: string }) {
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
-const TabOneStack = createStackNavigator<TabOneParamList>();
+const HomeStack = createStackNavigator<HomeParamList>();
 
-function TabOneNavigator() {
+function HomeNavigator() {
   return (
-    <TabOneStack.Navigator>
-      <TabOneStack.Screen name='TabOneScreen' component={TabOneScreen} options={{ headerTitle: 'Tab One Title' }} />
-    </TabOneStack.Navigator>
+    <HomeStack.Navigator>
+      <HomeStack.Screen name='HomeScreen' component={HomeScreen} options={{ headerShown: false }} />
+      <HomeStack.Screen name='ProfileScreen' component={ProfileScreen} options={{ headerShown: false }} />
+    </HomeStack.Navigator>
   );
 }
 
@@ -59,5 +70,15 @@ function TabTwoNavigator() {
     <TabTwoStack.Navigator>
       <TabTwoStack.Screen name='TabTwoScreen' component={TabTwoScreen} options={{ headerTitle: 'Tab Two Title' }} />
     </TabTwoStack.Navigator>
+  );
+}
+
+const SettingStack = createStackNavigator<SettingsParamList>();
+
+function SettingNavigator() {
+  return (
+    <SettingStack.Navigator>
+      <SettingStack.Screen name='SettingScreen' component={SetingScreen} options={{ headerTitle: 'Settings', headerShown: true }} />
+    </SettingStack.Navigator>
   );
 }
