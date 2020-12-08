@@ -24,7 +24,9 @@ function diffTime(outTime: string, inTime: string): string {
     minDiff -= 60;
   }
 
-  const result = `${hourDiff}${minDiff === 0 ? '' : `.${minDiff}`} ${hourDiff === 0 ? 'Minutes' : 'Hours'}`;
+  const result = `${hourDiff === 0 ? '' : `${hourDiff}${minDiff === 0 ? '' : '.'}`}${minDiff === 0 ? '' : `${minDiff}`} ${
+    hourDiff === 0 ? 'Minutes' : 'Hours'
+  }`;
   return result;
 }
 
