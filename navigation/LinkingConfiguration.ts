@@ -8,12 +8,12 @@ export default {
         screens: {
           Home: {
             screens: {
-              HomeScreen: 'one',
+              HomeScreen: 'home',
             },
           },
-          TabTwo: {
+          History: {
             screens: {
-              TabTwoScreen: 'two',
+              HistoryScreen: 'history',
             },
           },
         },
