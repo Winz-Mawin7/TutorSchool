@@ -1,4 +1,5 @@
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
+import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 
 export type RootStackParamList = {
@@ -8,11 +9,14 @@ export type RootStackParamList = {
 
 export type StackParamList = {
   Home: undefined;
-  ProfileScreen: undefined;
+  Profile: undefined;
+  History: undefined;
+  HistoryDetail: {
+    id: number;
+  };
 };
 
 // BOTTOM TAB PARAM LIST
-
 export type BottomTabParamList = {
   Home: undefined;
   History: undefined;
@@ -20,20 +24,22 @@ export type BottomTabParamList = {
 };
 
 export type HomeParamList = {
-  HomeScreen: undefined;
-  ProfileScreen: undefined;
+  Home: undefined;
+  Profile: undefined;
 };
 
 export type HistoryParamList = {
-  HistoryScreen: undefined;
+  History: undefined;
+  HistoryDetail: {
+    id: number;
+  };
 };
 
 export type SettingsParamList = {
-  SettingScreen: undefined;
+  Setting: undefined;
 };
 
 // BOTTOM TAB NAVIGATION PROP
-
 export type TabParamProps<T extends keyof BottomTabParamList> = {
   navigation: BottomTabNavigationProp<BottomTabParamList, T>;
 };
@@ -41,4 +47,5 @@ export type TabParamProps<T extends keyof BottomTabParamList> = {
 // STACK NAVIGATON PROP
 export type StackParamProps<T extends keyof StackParamList> = {
   navigation: StackNavigationProp<StackParamList, T>;
+  route: RouteProp<StackParamList, T>;
 };

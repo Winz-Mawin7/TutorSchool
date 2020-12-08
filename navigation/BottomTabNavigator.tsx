@@ -10,6 +10,7 @@ import HistoryScreen from '../screens/HistoryScreen';
 import SetingScreen from '../screens/SettingScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import { BottomTabParamList, SettingsParamList, HomeParamList, HistoryParamList } from '../types';
+import HistoryDetailScreen from '../screens/HistoryDetailScreen';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -56,8 +57,8 @@ const HomeStack = createStackNavigator<HomeParamList>();
 function HomeNavigator() {
   return (
     <HomeStack.Navigator>
-      <HomeStack.Screen name='HomeScreen' component={HomeScreen} options={{ headerShown: false }} />
-      <HomeStack.Screen name='ProfileScreen' component={ProfileScreen} options={{ headerShown: false }} />
+      <HomeStack.Screen name='Home' component={HomeScreen} options={{ headerShown: false }} />
+      <HomeStack.Screen name='Profile' component={ProfileScreen} options={{ headerShown: false }} />
     </HomeStack.Navigator>
   );
 }
@@ -67,7 +68,8 @@ const HistoryStack = createStackNavigator<HistoryParamList>();
 function HistoryNavigator() {
   return (
     <HistoryStack.Navigator>
-      <HistoryStack.Screen name='HistoryScreen' component={HistoryScreen} options={{ headerTitle: 'History', headerShown: false }} />
+      <HistoryStack.Screen name='History' component={HistoryScreen} options={{ headerTitle: 'History', headerShown: false }} />
+      <HistoryStack.Screen name='HistoryDetail' component={HistoryDetailScreen} options={{ headerTitle: 'Detail', headerShown: false }} />
     </HistoryStack.Navigator>
   );
 }
@@ -77,7 +79,7 @@ const SettingStack = createStackNavigator<SettingsParamList>();
 function SettingNavigator() {
   return (
     <SettingStack.Navigator>
-      <SettingStack.Screen name='SettingScreen' component={SetingScreen} options={{ headerTitle: 'Settings', headerShown: true }} />
+      <SettingStack.Screen name='Setting' component={SetingScreen} options={{ headerTitle: 'Settings', headerShown: true }} />
     </SettingStack.Navigator>
   );
 }

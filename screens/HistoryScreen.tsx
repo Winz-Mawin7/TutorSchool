@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Divider, Icon, Layout, List, ListItem, Text, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { TabParamProps } from '../types';
+import { StackParamProps, TabParamProps } from '../types';
 import { ListRenderItemInfo, StyleSheet, View } from 'react-native';
 
 import history from '../data/history.json';
@@ -30,9 +30,14 @@ function diffTime(outTime: string, inTime: string): string {
   return result;
 }
 
-export default function HomeScreen({ navigation }: TabParamProps<'History'>) {
-  const renderItem = ({ item }: ListRenderItemInfo<ITimeTable>) => (
-    <ListItem title={item.subject} description={`${item.inTime} - ${item.outTime}`} accessoryRight={() => <Text>{diffTime(item.outTime, item.inTime)}</Text>} />
+export default function HistoryScreen({ navigation }: StackParamProps<'History'>) {
+  const renderItem = ({ item, index }: ListRenderItemInfo<ITimeTable>) => (
+    <ListItem
+      title={item.subject}
+      description={`${item.inTime} - ${item.outTime}`}
+      accessoryRight={() => <Text>{diffTime(item.outTime, item.inTime)}</Text>}
+      onPress={() => navigation.navigate('HistoryDetail', { id: index + 1 })}
+    />
   );
 
   return (

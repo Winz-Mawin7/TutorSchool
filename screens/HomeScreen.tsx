@@ -12,7 +12,9 @@ interface ITimeTable {
 }
 
 export default function HomeScreen({ navigation }: StackParamProps<'Home'>) {
-  const renderItem = ({ item }: ListRenderItemInfo<ITimeTable>) => <ListItem title={item.subject} description={item.time} />;
+  const renderItem = ({ item, index }: ListRenderItemInfo<ITimeTable>) => (
+    <ListItem title={item.subject} description={item.time} onPress={() => console.log('Pressed')} />
+  );
 
   return (
     <Layout style={styles.container}>
@@ -20,7 +22,7 @@ export default function HomeScreen({ navigation }: StackParamProps<'Home'>) {
       <TopNavigation
         alignment='center'
         title='Home'
-        accessoryRight={() => <TopNavigationAction icon={(props) => <Icon {...props} name='person' />} onPress={() => navigation.navigate('ProfileScreen')} />}
+        accessoryRight={() => <TopNavigationAction icon={(props) => <Icon {...props} name='person' />} onPress={() => navigation.navigate('Profile')} />}
       />
       <Divider />
       <View style={styles.titleContainer}>

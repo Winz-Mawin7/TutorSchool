@@ -20,8 +20,8 @@ export default function App() {
       <>
         <IconRegistry icons={EvaIconsPack} />
         <ApplicationProvider {...eva} theme={eva.light}>
+          <StatusBar />
           <SafeAreaProvider>
-            <StatusBar />
             <Navigation colorScheme={colorScheme} />
           </SafeAreaProvider>
         </ApplicationProvider>
