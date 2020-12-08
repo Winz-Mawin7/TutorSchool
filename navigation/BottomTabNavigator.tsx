@@ -29,7 +29,7 @@ export default function BottomTabNavigator() {
         name='History'
         component={HistoryNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name='ios-code' color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name='ios-time' color={color} />,
         }}
       />
       <BottomTab.Screen
