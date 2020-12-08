@@ -6,11 +6,10 @@ import * as React from 'react';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import HomeScreen from '../screens/HomeScreen';
-import TabTwoScreen from '../screens/TabTwoScreen';
+import HistoryScreen from '../screens/HistoryScreen';
 import SetingScreen from '../screens/SettingScreen';
 import ProfileScreen from '../screens/ProfileScreen';
-import { BottomTabParamList, SettingsParamList, HomeParamList, TabTwoParamList } from '../types';
-import { Icon } from '@ui-kitten/components';
+import { BottomTabParamList, SettingsParamList, HomeParamList, HistoryParamList } from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -27,8 +26,8 @@ export default function BottomTabNavigator() {
         }}
       />
       <BottomTab.Screen
-        name='TabTwo'
-        component={TabTwoNavigator}
+        name='History'
+        component={HistoryNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name='ios-code' color={color} />,
         }}
@@ -63,13 +62,13 @@ function HomeNavigator() {
   );
 }
 
-const TabTwoStack = createStackNavigator<TabTwoParamList>();
+const HistoryStack = createStackNavigator<HistoryParamList>();
 
-function TabTwoNavigator() {
+function HistoryNavigator() {
   return (
-    <TabTwoStack.Navigator>
-      <TabTwoStack.Screen name='TabTwoScreen' component={TabTwoScreen} options={{ headerTitle: 'Tab Two Title' }} />
-    </TabTwoStack.Navigator>
+    <HistoryStack.Navigator>
+      <HistoryStack.Screen name='HistoryScreen' component={HistoryScreen} options={{ headerTitle: 'History', headerShown: false }} />
+    </HistoryStack.Navigator>
   );
 }
 

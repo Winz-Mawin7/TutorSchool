@@ -15,7 +15,7 @@ export type StackParamList = {
 
 export type BottomTabParamList = {
   Home: undefined;
-  TabTwo: undefined;
+  History: undefined;
   Settings: undefined;
 };
 
@@ -24,8 +24,8 @@ export type HomeParamList = {
   ProfileScreen: undefined;
 };
 
-export type TabTwoParamList = {
-  TabTwoScreen: undefined;
+export type HistoryParamList = {
+  HistoryScreen: undefined;
 };
 
 export type SettingsParamList = {

@@ -1,0 +1,7 @@
+{
+  "data": [
+    { "subject": "Chinese for Nursery", "inTime": "14.00", "outTime": "16.45" },
+    { "subject": "Chinese for Adult", "inTime": "16.55", "outTime": "17.00" },
+    { "subject": "Chinese for Beginner", "inTime": "18.00", "outTime": "19.00" }
+  ]
+}
